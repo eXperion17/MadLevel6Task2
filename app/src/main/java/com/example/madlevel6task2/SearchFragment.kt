@@ -6,12 +6,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class SearchFragment : Fragment() {
+
+   // private val colors = arrayListOf<ColorItem>()
+    //private lateinit var colorAdapter: ColorAdapter
+
+    //private val viewModel: ColorViewModel by viewModels()
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
