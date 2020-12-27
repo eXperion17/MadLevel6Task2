@@ -36,7 +36,8 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         view.findViewById<Button>(R.id.bt_search).setOnClickListener {
-            viewModel.loadMovies(et_year.text.toString().toInt())
+            //viewModel.loadMovies(et_year.text.toString().toInt())
+            viewModel.getMoviesOfYear(et_year.text.toString())
         }
 
         initViews()

@@ -10,14 +10,13 @@ import com.example.madlevel6task2.database.Movie
 import kotlinx.android.synthetic.main.item_movie.view.*
 
 class MovieAdapter(private val movies:List<Movie>) : RecyclerView.Adapter<MovieAdapter.ViewHolder>() {
-
     private lateinit var context: Context
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun databind(movie: Movie) {
-            Glide.with(context).load(movie.getPosterUrl()).into(itemView.iv_poster)
-            itemView.tv_rank.text = movie.rank.toString();
+            Glide.with(context).load("https://image.tmdb.org/t/p/original"+movie.poster).into(itemView.iv_poster)
+            itemView.tv_rank.text = movie.rating.toString();
         }
     }
 

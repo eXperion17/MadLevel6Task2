@@ -7,7 +7,6 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
-import com.example.madlevel5task2.dao.MovieDao
 import com.example.madlevel6task2.api.MovieApi
 import com.example.madlevel6task2.api.MovieApiService
 import com.google.gson.Gson
@@ -15,18 +14,18 @@ import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.withTimeout
 import java.lang.reflect.Type;
 
-class MovieRepository(context: Context) {
+class MovieRepository() {
     private val movieApiService: MovieApiService = MovieApi.createApi()
     private val _movies: MutableLiveData<List<Movie>> = MutableLiveData()
 
-    val trivia: LiveData<List<Movie>>
+    val movies: LiveData<List<Movie>>
         get() = _movies
 
-    suspend fun getRandomNumberTrivia()  {
+    suspend fun getMoviesOfYear(year:String)  {
         try {
             //timeout the request after 5 seconds
             val result = withTimeout(5_000) {
-                movieApiService.getMoviesOfYear("2012")
+                movieApiService.getMoviesOfYear(year)
             }
 
             _movies.value = result
