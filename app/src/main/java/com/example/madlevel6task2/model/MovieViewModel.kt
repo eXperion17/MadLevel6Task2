@@ -15,7 +15,7 @@ class MovieViewModel(application: Application) : AndroidViewModel(application) {
     private val movieRepository =  MovieRepository(application.applicationContext)
     private val mainScope = CoroutineScope(Dispatchers.Main)
 
-    val movies = movieRepository.getMovies(2016)
+    val movies = movieRepository.getMovies()
     val error = MutableLiveData<String>()
     val success = MutableLiveData<Boolean>()
 
@@ -28,7 +28,7 @@ class MovieViewModel(application: Application) : AndroidViewModel(application) {
         }
     }
 
-    fun getMovies(year:Int) : LiveData<List<Movie>> {
-        return movieRepository.getMovies(year);
+    fun loadMovies(year:Int)/* : LiveData<List<Movie>>*/ {
+        return movieRepository.loadMovies(year);
     }
 }
