@@ -8,16 +8,20 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import com.example.madlevel6task2.database.Movie
+import com.example.madlevel6task2.model.MovieViewModel
+import kotlinx.android.synthetic.main.fragment_search.*
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
 class SearchFragment : Fragment() {
 
-   // private val colors = arrayListOf<ColorItem>()
-    //private lateinit var colorAdapter: ColorAdapter
+    private val movies = arrayListOf<Movie>()
+    private lateinit var movieAdapter: MovieAdapter
 
-    //private val viewModel: ColorViewModel by viewModels()
+    private val viewModel: MovieViewModel by viewModels()
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
@@ -33,5 +37,12 @@ class SearchFragment : Fragment() {
         /*view.findViewById<Button>(R.id.button_first).setOnClickListener {
             //findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }*/
+
+        initViews()
+    }
+
+    private fun initViews() {
+        rv_movies.layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
+        rv_movies.adapter = movieAdapter
     }
 }

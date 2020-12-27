@@ -25,4 +25,8 @@ data class Movie (
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
     var id:Long? = null
-)
+) {
+    //TODO: API stuff here!
+    fun getPosterUrl() = ""
+    fun getCoverUrl() = ""
+}
