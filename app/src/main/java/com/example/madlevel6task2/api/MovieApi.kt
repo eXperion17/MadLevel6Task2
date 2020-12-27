@@ -10,9 +10,6 @@ class MovieApi {
         // The base url off the api.
         private const val baseUrl = "https://api.themoviedb.org/3/"
 
-        /**
-         * @return [TriviaApiService] The service class off the retrofit client.
-         */
         fun createApi(): MovieApiService {
             // Create an OkHttpClient to be able to make a log of the network traffic
             val okHttpClient = OkHttpClient.Builder()
@@ -22,14 +19,14 @@ class MovieApi {
                 .build()
 
             // Create the Retrofit instance
-            val triviaApi = Retrofit.Builder()
+            val movieApi = Retrofit.Builder()
                 .baseUrl(baseUrl)
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
             // Return the Retrofit TriviaApiService
-            return triviaApi.create(MovieApiService::class.java)
+            return movieApi.create(MovieApiService::class.java)
         }
 
 

@@ -28,7 +28,7 @@ class MovieRepository() {
                 movieApiService.getMoviesOfYear(year)
             }
 
-            _movies.value = result
+            _movies.value = result.movies
         } catch (error: Throwable) {
             throw MovieRefreshError("Unable to load movies!", error)
         }
