@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.madlevel6task2.database.Movie
@@ -19,7 +20,7 @@ import kotlinx.android.synthetic.main.fragment_search.*
 class SearchFragment : Fragment() {
 
     private val movies = arrayListOf<Movie>()
-    private lateinit var movieAdapter: MovieAdapter
+    private val movieAdapter = MovieAdapter(movies)
 
     private val viewModel: MovieViewModel by viewModels()
 
@@ -34,9 +35,9 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        /*view.findViewById<Button>(R.id.button_first).setOnClickListener {
-            //findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-        }*/
+        view.findViewById<Button>(R.id.bt_search).setOnClickListener {
+            viewModel.getMovies(et_year.text.toString().toInt())
+        }
 
         initViews()
     }
@@ -44,5 +45,16 @@ class SearchFragment : Fragment() {
     private fun initViews() {
         rv_movies.layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
         rv_movies.adapter = movieAdapter
+
+        observeChanges()
+    }
+
+    private fun observeChanges()  {
+        viewModel.movies.observe(viewLifecycleOwner, Observer { movie -> movie?.let {
+                movies.clear()
+                movies.addAll(movie)
+                movieAdapter.notifyDataSetChanged()
+            }
+        })
     }
 }

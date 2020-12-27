@@ -12,7 +12,7 @@ data class Movie (
     @ColumnInfo(name = "releaseDate")
     var releaseDate: Date,
     @ColumnInfo(name = "rating")
-    var rating: Number,
+    var rating: Long,
     @ColumnInfo(name = "rank")
     var rank: Int,
     @ColumnInfo(name = "summary")

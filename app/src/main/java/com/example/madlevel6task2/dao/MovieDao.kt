@@ -12,4 +12,7 @@ interface MovieDao {
     @Query("DELETE FROM movie_table")
     suspend fun clearMovies()
 
+    @Insert
+    fun insertMovies(movies:List<Movie>)
+
 }

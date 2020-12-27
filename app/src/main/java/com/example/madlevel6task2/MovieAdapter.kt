@@ -16,7 +16,6 @@ class MovieAdapter(private val movies:List<Movie>) : RecyclerView.Adapter<MovieA
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun databind(movie: Movie) {
-            //TODO: Look up url?
             Glide.with(context).load(movie.getPosterUrl()).into(itemView.iv_poster)
             itemView.tv_rank.text = movie.rank.toString();
         }
