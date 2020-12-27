@@ -33,7 +33,7 @@
             android:layout_weight="1"
             android:autofillHints=""
             android:hint="@string/year"
-            android:inputType="date|number" />
+            android:inputType="number" />
 
         <Button
             android:id="@+id/bt_search"

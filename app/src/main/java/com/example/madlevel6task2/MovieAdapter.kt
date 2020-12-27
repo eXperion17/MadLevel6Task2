@@ -16,7 +16,7 @@ class MovieAdapter(private val movies:List<Movie>) : RecyclerView.Adapter<MovieA
 
         fun databind(movie: Movie) {
             Glide.with(context).load("https://image.tmdb.org/t/p/original"+movie.poster).into(itemView.iv_poster)
-            itemView.tv_rank.text = movie.rating.toString();
+            itemView.tv_rank.text = (this.layoutPosition+1).toString()
         }
     }
 
