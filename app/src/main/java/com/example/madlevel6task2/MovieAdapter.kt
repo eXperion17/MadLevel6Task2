@@ -14,7 +14,7 @@ class MovieAdapter(private val movies:List<Movie>,private val onClick: (Int) -> 
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         init {
-            itemView.setOnClickListener { onClick(adapterPosition) }
+            itemView.setOnClickListener { onClick(layoutPosition) }
         }
 
         fun databind(movie: Movie) {
