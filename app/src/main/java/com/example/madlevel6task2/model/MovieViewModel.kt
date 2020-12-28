@@ -16,8 +16,11 @@ class MovieViewModel(application: Application) : AndroidViewModel(application) {
     private val movieRepository = MovieRepository()
     val movies = movieRepository.movies
 
-    private val _errorText: MutableLiveData<String> = MutableLiveData()
+    private var _selectedMovie = -1
+    val selectedMovie: Int
+        get() = _selectedMovie
 
+    private val _errorText: MutableLiveData<String> = MutableLiveData()
     val errorText: LiveData<String>
         get() = _errorText
 
@@ -30,5 +33,9 @@ class MovieViewModel(application: Application) : AndroidViewModel(application) {
                 Log.e("Movie (load) error", error.cause.toString())
             }
         }
+    }
+
+    fun setSelectedMovie(id:Int) {
+        _selectedMovie = id
     }
 }

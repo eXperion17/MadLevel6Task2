@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.fragment_search.*
 class SearchFragment : Fragment() {
 
     private val movies = arrayListOf<Movie>()
-    private val movieAdapter = MovieAdapter(movies)
+    private val movieAdapter = MovieAdapter(movies, :: onMovieClick)
 
     private val viewModel: MovieViewModel by viewModels()
 
@@ -36,11 +36,16 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         view.findViewById<Button>(R.id.bt_search).setOnClickListener {
-            //viewModel.loadMovies(et_year.text.toString().toInt())
             viewModel.getMoviesOfYear(et_year.text.toString())
         }
 
         initViews()
+    }
+
+    private fun onMovieClick(position:Int) {
+        viewModel.setSelectedMovie(position)
+
+        findNavController().navigate(R.id.movieInfoFragment)
     }
 
     private fun initViews() {
